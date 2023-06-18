@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function BudgetTable() {
-  let available = 2500.0;
+  const [allowance, setAllowance] = useState(2500);
 
   const [budgets, setBudgets] = useState([
     { id: 0, name: "Groceries", budgeted: 500.0, spent: 0.0, remaining: 500.0 },
@@ -10,6 +10,11 @@ function BudgetTable() {
   ]);
 
   const [rowIdBeingEdited, setRowIdBeingEdited] = useState(null);
+
+  function editAllowance() {
+    setAllowance(0);
+    console.log("allowance", allowance);
+  }
 
   function getBudgetedTotal() {
     let initialValue = 0.0;
@@ -35,8 +40,8 @@ function BudgetTable() {
       (accumulator, budgets) => accumulator + budgets.spent,
       initialValue
     );
-    available -= expenditureTotal;
-    return available;
+    // allowance -= expenditureTotal;
+    return allowance;
   }
 
   function handleNameInput(budgetToUpdate, newName) {
@@ -75,7 +80,7 @@ function BudgetTable() {
 
   function addBudget(name, amount) {
     budgets[name] = amount;
-    available -= amount;
+    // allowance -= amount;
   }
 
   function spend(name, amount) {
@@ -107,6 +112,37 @@ function BudgetTable() {
 
   return (
     <div className="table-responsive-md">
+      <div className="d-flex justify-content-center">
+        <div className="input-group w-auto">
+          <label>
+            Your total allowance is:
+            <input
+              type="text"
+              className="form-control"
+              placeholder={allowance}
+            />
+            <button
+              className="btn btn-primary"
+              type="button"
+              id="button-addon1"
+              data-mdb-ripple-color="dark"
+            >
+              Change
+            </button>
+          </label>
+        </div>
+      </div>
+      {/* <label>
+        Your total budget allowance is: £
+        <input
+          type="text"
+          name="allowance"
+          value={allowance}
+          className="form-control"
+          onChange={(e) => handleNameInput("", e.target.value)}
+          // onKeyDown={handleKeyDown}
+        ></input>
+      </label> */}
       <button type="button" className="btn btn-success" onClick={addRow}>
         + Add Budget
       </button>
@@ -159,7 +195,7 @@ function BudgetTable() {
                     onKeyDown={handleKeyDown}
                   />
                 ) : (
-                  budget.budgeted
+                  "£" + budget.budgeted
                 )}
               </td>
               <td>
@@ -174,7 +210,7 @@ function BudgetTable() {
                     onKeyDown={handleKeyDown}
                   />
                 ) : (
-                  budget.spent
+                  "£" + budget.spent
                 )}
               </td>
               <td>
@@ -189,7 +225,7 @@ function BudgetTable() {
                     onKeyDown={handleKeyDown}
                   />
                 ) : (
-                  budget.remaining
+                  "£" + budget.remaining
                 )}
               </td>
               <td>
@@ -215,9 +251,9 @@ function BudgetTable() {
           <tr></tr>
           <tr>
             <th scope="row">Total</th>
-            <td>{getBudgetedTotal()}</td>
-            <td>{getExpenditureTotal()}</td>
-            <td>{getTotalRemaining()}</td>
+            <td>{"£" + getBudgetedTotal()}</td>
+            <td>{"£" + getExpenditureTotal()}</td>
+            <td>{"£" + getTotalRemaining()}</td>
           </tr>
         </tbody>
       </table>
