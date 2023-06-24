@@ -3,7 +3,7 @@ function NavBar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Budget Manager
+          <h3>💸 Welcome to the Budget Manager web app!</h3>
         </a>
       </div>
     </nav>
