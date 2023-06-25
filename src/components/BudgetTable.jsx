@@ -173,25 +173,16 @@ function BudgetTable({ budgets, onChangeBudgets }) {
                 </td>
                 <td> {"£" + budget.remaining}</td>
                 <td>
-                  <span className="pr-2">
-                    <button
-                      type="button"
-                      className="btn btn-success"
-                      onClick={() => {
-                        editRow(budget);
-                      }}
-                    >
-                      Edit
-                    </button>
+                  <span
+                    className="pr-4 btn"
+                    onClick={() => {
+                      editRow(budget);
+                    }}
+                  >
+                    ✏️
                   </span>
-                  <span>
-                    <button
-                      type="button"
-                      className="btn btn-success"
-                      onClick={() => deleteRow(budget)}
-                    >
-                      Delete
-                    </button>
+                  <span className="btn" onClick={() => deleteRow(budget)}>
+                    🗑️
                   </span>
                 </td>
               </tr>
