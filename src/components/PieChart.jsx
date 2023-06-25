@@ -3,13 +3,16 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function PieChart() {
+function PieChart({ budgets }) {
+  const labels = budgets.map((budget) => budget.name);
+  const spentValues = budgets.map((budget) => budget.spent);
+
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels,
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        label: "Expenditure",
+        data: spentValues,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
