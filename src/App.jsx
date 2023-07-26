@@ -38,7 +38,7 @@ function App() {
         budgets={budgets}
         onChangeBudgets={handleOnChangeBudgets}
       ></BudgetTable>
-      <p className="d-flex flex-row justify-content-center">
+      <p className="d-flex flex-row justify-content-center px-10 md:px-20 lg:px-80">
         Rows with a red background show expenditures that are 80% or more of
         their budgeted allowance.
       </p>

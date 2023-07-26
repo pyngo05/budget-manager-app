@@ -101,8 +101,8 @@ function BudgetTable({ budgets, onChangeBudgets }) {
 
   return (
     <div className="table-responsive-md">
-      <div className="p-5">
-        <button type="button" className="btn btn-success p-" onClick={addRow}>
+      <div className="px-10 md:px-20 lg:px-80">
+        <button type="button" className="btn btn-success p-1" onClick={addRow}>
           + Add Budget
         </button>
         <table className="table table-hover table-borderless">
